@@ -101,7 +101,7 @@ trigger:
 action:
 - variables:
     command: '{{ trigger.event.data.command }}'
-    cur_brightness: '{{ state_attr(light, ''brightness'') | int }}'
+    cur_brightness: '{{ state_attr(light, ''brightness'') | default(0) }}'
     is_turned_on: '{{ states(light) == ''on'' }}'
 - choose:
   - conditions: '{{ command == ''on_press'' }}'
